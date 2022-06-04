@@ -1,12 +1,13 @@
 module.exports = {
   content: [],
   theme: {
-    extend: {
-      colors:{
-        electric: '#db00ff',
-        ribbon: '#0047ff',
-      }
+    colors: {
+      black: '#0f0e17',
+      white: '#fffffe',
+      gray: '#a7a9be',
+      orange: '#ff8906',
+      tertiary: '#e53170',
     },
   },
   plugins: [],
-}
+};
