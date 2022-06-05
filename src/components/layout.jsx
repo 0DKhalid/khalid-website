@@ -3,10 +3,8 @@ import React from 'react';
 import { Global, css } from '@emotion/react';
 import { theme, GlobalStyles as BaseStyle } from 'twin.macro';
 import { Navbar } from '.';
-import Helmet from 'react-helmet';
 
 // global styles
-
 const globalStyle = css({
   body: {
     backgroundColor: theme`colors.black`,
@@ -14,10 +12,9 @@ const globalStyle = css({
   },
 });
 
-const Layout = ({ children, pageDir }) => {
+const Layout = ({ children }) => {
   return (
     <div>
-      <Helmet bodyAttributes={{ dir: pageDir || 'rtl' }} />
       <Global styles={globalStyle} />
       <BaseStyle />
       <Navbar />

@@ -8,7 +8,7 @@ const LinksContainer = tw.ul`flex items-center w-1/4 justify-between mr-9 mt-9`;
 
 const NavLink = tw(
   Link
-)`text-lg font-extrabold text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-tertiary hover:to-orange px-3 `;
+)`text-lg text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-tertiary hover:to-orange px-3 `;
 
 const menuItems = [
   { path: '/courses', label: 'الدورات' },
@@ -25,6 +25,9 @@ const Navbar = () => {
           </NavLink>
         ))}
       </LinksContainer>
+      <h1 tw='font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-tertiary to-orange ml-9 mt-9'>
+        KTech
+      </h1>
     </NavContainer>
   );
 };
