@@ -9,6 +9,7 @@ const globalStyle = css({
   body: {
     backgroundColor: theme`colors.black`,
     fontFamily: theme`fontFamily.tajawal`,
+    direction: 'rtl',
   },
 });
 

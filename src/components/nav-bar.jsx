@@ -8,7 +8,7 @@ const LinksContainer = tw.ul`flex items-center w-1/4 justify-between mr-9 mt-9`;
 
 const NavLink = tw(
   Link
-)`text-lg text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-tertiary hover:to-orange px-3 `;
+)`lg:text-lg text-sm text-white  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-tertiary hover:to-orange px-3 `;
 
 const menuItems = [
   { path: '/courses', label: 'الدورات' },
