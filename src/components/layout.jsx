@@ -10,6 +10,7 @@ const globalStyle = css({
     backgroundColor: theme`colors.black`,
     fontFamily: theme`fontFamily.tajawal`,
     direction: 'rtl',
+    color: theme`colors.white`,
   },
 });
 
