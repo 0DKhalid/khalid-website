@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FaGithub, FaLinkedin, FaYoutube, FaArrowLeft } from 'react-icons/fa';
+import { BsArrowLeft, BsYoutube, BsLinkedin, BsGithub } from 'react-icons/bs';
 import tw from 'twin.macro';
 
 // markup
@@ -14,23 +14,23 @@ const IndexPage = () => {
         </p>
         <div tw=' flex justify-center items-center text-gray mt-8'>
           <a href='#' tw='hover:text-tertiary'>
-            <FaGithub size='1.7rem' />
+            <BsGithub size='1.6rem' />
           </a>
 
           <a href='#' tw='hover:text-tertiary'>
-            <FaLinkedin
-              size='1.7rem'
+            <BsLinkedin
+              size='1.6rem'
               style={{ marginLeft: 25, marginRight: 25 }}
             />
           </a>
           <a href='#' tw='hover:text-tertiary'>
-            <FaYoutube size='1.8rem' />
+            <BsYoutube size='1.6rem' />
           </a>
         </div>
       </header>
       {/* Posts list */}
 
-      <section tw='py-20'>
+      <section tw='pt-20 pb-10'>
         <h1 tw='text-5xl text-center mb-10'>My posts</h1>
         <article tw='py-10 border-b border-gray  px-10 mx-20 text-center'>
           <h1 tw='text-xl font-bold py-6'>whats web development</h1>
@@ -42,13 +42,13 @@ const IndexPage = () => {
           </p>
           <div tw='flex text-gray justify-between items-center pt-10'>
             <p tw='text-sm'>2020/1</p>
-            <div tw='flex w-2/12  justify-between items-center'>
+            <div tw='flex text-white w-2/12 text-sm justify-between items-center'>
               <p>tag1</p>
               <p>tag2</p>
               <p>tag3</p>
             </div>
             <p tw='text-tertiary'>
-              <FaArrowLeft size='1.7rem' />
+              <BsArrowLeft size='1.7rem' />
             </p>
           </div>
         </article>
