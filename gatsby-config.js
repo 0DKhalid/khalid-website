@@ -8,20 +8,25 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
 
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ['Tajawal'],
+          families: ["Tajawal"],
         },
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'posts',
-        path: `${__dirname}/src/posts`,
+        name: "posts",
+        path: `${__dirname}/src/content`,
       },
     },
-    'gatsby-plugin-mdx',
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        extensions: [".mdx", ".md"],
+      },
+    },
   ],
 };

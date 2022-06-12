@@ -1,11 +1,13 @@
-import * as React from 'react';
-import { BsArrowLeft, BsYoutube, BsLinkedin, BsGithub } from 'react-icons/bs';
-import tw from 'twin.macro';
+import * as React from "react";
+import { graphql, Link } from "gatsby";
+import { BsArrowLeft, BsYoutube, BsLinkedin, BsGithub } from "react-icons/bs";
+import tw from "twin.macro";
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   return (
     <>
+      <pre tw='text-white'>{JSON.stringify(data, null, 4)}</pre>
       <header tw='py-48 text-center'>
         <h1 tw='text-5xl mb-8 text-white'>welcome to my page</h1>
         <p tw='text-gray'>
@@ -31,30 +33,46 @@ const IndexPage = () => {
       {/* Posts list */}
 
       <section tw='pt-20 pb-10'>
-        <h1 tw='text-5xl text-center mb-10'>My posts</h1>
-        <article tw='py-10 border-b border-gray  px-10 mx-20 text-center'>
-          <h1 tw='text-xl font-bold py-6'>whats web development</h1>
-          <p tw='text-gray'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-            atque vero suscipit doloremque provident maiores impedit iste beatae
-            temporibus soluta? Laudantium delectus consectetur corrupti incidunt
-            unde eveniet, in illo accusamus?
-          </p>
-          <div tw='flex text-gray justify-between items-center pt-10'>
-            <p tw='text-sm'>2020/1</p>
-            <div tw='flex text-white w-2/12 text-sm justify-between items-center'>
-              <p>tag1</p>
-              <p>tag2</p>
-              <p>tag3</p>
+        <h1 tw='text-5xl text-center mb-16'>My posts</h1>
+        {data.posts.nodes.map((post) => (
+          <article tw='py-6 px-10 mx-20  mb-20 text-center border-b border-gray'>
+            <h1 tw='text-xl font-bold py-10'>{post.frontmatter.title}</h1>
+            <p tw='text-gray'>{post.excerpt}</p>
+            <div tw='flex text-gray justify-between items-center pt-6'>
+              <div tw='flex-col justify-center items-center'>
+                <p tw='text-sm py-4'>{post.frontmatter.date}</p>
+                <h4 tw='text-sm bg-tertiary text-white px-3 rounded-full font-bold'>
+                  {post.frontmatter.authore}
+                </h4>
+              </div>
+              <p tw='text-tertiary'>
+                <Link to={`/posts/${post.slug}`}>
+                  <BsArrowLeft size='1.7rem' />
+                </Link>
+              </p>
             </div>
-            <p tw='text-tertiary'>
-              <BsArrowLeft size='1.7rem' />
-            </p>
-          </div>
-        </article>
+          </article>
+        ))}
       </section>
     </>
   );
 };
+
+export const query = graphql`
+  query allPosts {
+    posts: allMdx {
+      nodes {
+        excerpt(pruneLength: 250, truncate: true)
+        frontmatter {
+          title
+          date(locale: "Ar", formatString: "YYYY DD, MMMM")
+          authore
+        }
+        id
+        slug
+      }
+    }
+  }
+`;
 
 export default IndexPage;
