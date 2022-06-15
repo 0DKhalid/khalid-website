@@ -2,16 +2,16 @@ module.exports = {
   content: [],
   theme: {
     fontFamily: {
-      tajawal: ['Tajawal'],
+      tajawal: ["Tajawal"],
     },
     colors: {
-      transparent: 'transparent',
-      black: '#0f0e17',
-      white: '#fffffe',
-      gray: '#a7a9be',
-      orange: '#ff8906',
-      tertiary: '#e53170',
+      transparent: "transparent",
+      black: "#0f0e17",
+      white: "#fffffe",
+      gray: "#a7a9be",
+      orange: "#ff8906",
+      tertiary: "#e53170",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

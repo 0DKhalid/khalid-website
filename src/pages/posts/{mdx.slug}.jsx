@@ -1,14 +1,27 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import tw from "twin.macro";
 
-const H2 = tw.h2`text-2xl text-orange my-4`;
-const P = tw.p`text-base text-gray`;
+import { BsClock } from "react-icons/bs";
+
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import tw, { styled } from "twin.macro";
+import { MDXProvider } from "@mdx-js/react";
+
+const H1 = tw.h1`text-3xl my-6 text-white`;
+
+const H2 = tw.h2`text-2xl mt-8 mb-3 text-white`;
+const H3 = tw.h3`text-xl font-bold mt-8 mb-3 text-white`;
+const P = tw.p`text-lg  leading-8 text-gray`;
+const PRE = styled.pre`
+  direction: ltr;
+`;
 
 const components = {
-  h3: H2,
+  h1: H1,
+  h2: H2,
+  h3: H3,
   p: P,
+  pre: PRE,
 };
 
 const Post = ({ data }) => {
@@ -20,10 +33,16 @@ const Post = ({ data }) => {
       <div tw='mx-5 my-10 text-sm font-bold text-gray flex justify-evenly w-[50%]'>
         <p>{data.post.frontmatter.date}</p>
         <p>{data.post.frontmatter.authore}</p>
-        <p>{data.post.timeToRead} دقيقة</p>
+        <p tw='flex justify-center items-center'>
+          <BsClock style={{ marginLeft: "4px" }} />
+          {data.post.timeToRead}
+        </p>
       </div>
-
-      <MDXRenderer components={components}>{data.post.body}</MDXRenderer>
+      <section tw='mx-auto mx-8 my-20 prose prose-xl min-h-screen'>
+        <MDXProvider components={components}>
+          <MDXRenderer>{data.post.body}</MDXRenderer>
+        </MDXProvider>
+      </section>
     </div>
   );
 };
