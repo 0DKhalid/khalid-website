@@ -1,7 +1,7 @@
 import React from "react";
 import { Global, css } from "@emotion/react";
 import { theme, GlobalStyles as BaseStyle } from "twin.macro";
-import { Navbar } from ".";
+import { Navbar, Footer } from ".";
 
 // global styles
 const globalStyle = css({
@@ -19,7 +19,8 @@ const Layout = ({ children }) => {
       <Global styles={globalStyle} />
       <BaseStyle />
       <Navbar />
-      <main>{children}</main>````
+      <main>{children}</main>
+      <Footer />
     </>
   );
 };

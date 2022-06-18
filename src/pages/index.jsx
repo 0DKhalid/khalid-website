@@ -7,7 +7,7 @@ import tw from "twin.macro";
 const IndexPage = ({ data }) => {
   return (
     <>
-      <pre tw='text-white'>{JSON.stringify(data, null, 4)}</pre>
+      {/* <pre tw='text-white'>{JSON.stringify(data, null, 4)}</pre> */}
       <header tw='py-48 text-center'>
         <h1 tw='text-5xl mb-8 text-white'>welcome to my page</h1>
         <p tw='text-gray'>
@@ -60,7 +60,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query allPosts {
-    posts: allMdx {
+    posts: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
         excerpt(pruneLength: 250, truncate: true)
         frontmatter {

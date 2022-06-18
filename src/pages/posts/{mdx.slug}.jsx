@@ -7,11 +7,11 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import tw, { styled } from "twin.macro";
 import { MDXProvider } from "@mdx-js/react";
 
-const H1 = tw.h1`text-3xl my-6 text-white`;
+const H1 = tw.h1`text-3xl my-6  text-white`;
 
-const H2 = tw.h2`text-2xl mt-8 mb-3 text-white`;
-const H3 = tw.h3`text-xl font-bold mt-8 mb-3 text-white`;
-const P = tw.p`text-lg  leading-8 text-gray`;
+const H2 = tw.h2`text-2xl px-3 mt-8 mb-3 text-white`;
+const H3 = tw.h3`text-xl border-r border-orange px-3 mt-8 mb-3 text-white`;
+const P = tw.p`text-base  leading-8 text-gray`;
 const PRE = styled.pre`
   direction: ltr;
 `;
@@ -38,7 +38,7 @@ const Post = ({ data }) => {
           {data.post.timeToRead}
         </p>
       </div>
-      <section tw='mx-auto mx-8 my-20 prose prose-xl min-h-screen'>
+      <section tw='mx-auto mx-8 my-20 prose prose-lg'>
         <MDXProvider components={components}>
           <MDXRenderer>{data.post.body}</MDXRenderer>
         </MDXProvider>
