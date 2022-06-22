@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `ktech-website`,
@@ -31,6 +35,14 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-source-youtube-playlist`,
+      options: {
+        apiKey: process.env.YOUTUBE_KEY,
+        channelId: "UCIBfmRr16yo6gWRTh9rExIQ",
+        maxResults: 20, // default is 5
       },
     },
   ],
