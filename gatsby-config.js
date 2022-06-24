@@ -38,11 +38,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-youtube-playlist`,
+      resolve: "gatsby-source-ytbplaylist",
       options: {
         apiKey: process.env.YOUTUBE_KEY,
-        channelId: "UCIBfmRr16yo6gWRTh9rExIQ",
-        maxResults: 20, // default is 5
+        playListID: `PLy2vwCvAbFKScg8nZRzgCkxl3x8n9ABhD`,
+        maxResult: 50, // defualt 50
       },
     },
   ],

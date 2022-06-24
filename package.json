@@ -24,6 +24,7 @@
     "gatsby-remark-prismjs": "^6.16.0",
     "gatsby-source-filesystem": "^4.16.0",
     "gatsby-source-youtube-playlist": "^1.0.2",
+    "gatsby-source-youtube-v3": "^3.0.2",
     "gatsby-transformer-remark": "^5.16.0",
     "prismjs": "^1.28.0",
     "react": "^17.0.1",
