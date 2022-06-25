@@ -1,7 +1,4 @@
-const axios = require("axios");
-
-const YOUTUBE_PLAYLIST_ITEMS_API =
-  "https://www.googleapis.com/youtube/v3/playlistItems";
+const { getPlaylistsData } = require("./utl");
 
 exports.sourceNodes = async (
   { actions, createContentDigest, createNodeId, getNodesByType },
@@ -28,14 +25,15 @@ exports.sourceNodes = async (
   return;
 };
 
-const getPlaylistsData = async (playListIds, maxResult, apiKey) => {
-  const urls = playListIds.map(
-    (playListId) =>
-      `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${maxResult}&playlistId=${playListId}&key=${apiKey}`
-  );
-
-  const playListsData = await Promise.all(urls.map(axios.get)).then((res) =>
-    res.map((item) => item.data)
-  );
-  return playListsData;
+exports.pluginOptionsSchema = ({ Joi }) => {
+  return Joi.object({
+    apiKey: Joi.string()
+      .required()
+      .description(`You most define youtube apiKey to use this plugin`),
+    playListIds: Joi.array()
+      .items(Joi.string())
+      .required()
+      .description(`You must provide a youtube array playlist ids`),
+    optionB: Joi.number().description(`set maxresult return from youtube api`),
+  });
 };

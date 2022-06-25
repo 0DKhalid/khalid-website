@@ -43,9 +43,9 @@ module.exports = {
         apiKey: process.env.YOUTUBE_KEY,
         playListIds: [
           `PLy2vwCvAbFKScg8nZRzgCkxl3x8n9ABhD`,
-          `PLy2vwCvAbFKSmjvT1NsUEu6N58kf8qGFt`,
+          // `PLy2vwCvAbFKSmjvT1NsUEu6N58kf8qGFt`,add
         ],
-        maxResult: 50, // defualt 50
+        // maxResult: 50, // defualt 50
       },
     },
   ],
