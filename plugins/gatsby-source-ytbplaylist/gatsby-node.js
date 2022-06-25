@@ -11,7 +11,7 @@ exports.sourceNodes = async (
   playListsData.forEach((item) => {
     createNode({
       ...item,
-      id: createNodeId(`YtbPlaylist-${item.etag}`),
+      id: createNodeId(`YtbPlaylist-${item.id}`),
       parent: null,
       children: [],
       internal: {
