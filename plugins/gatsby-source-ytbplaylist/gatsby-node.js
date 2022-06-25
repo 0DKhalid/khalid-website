@@ -3,31 +3,39 @@ const axios = require("axios");
 const YOUTUBE_PLAYLIST_ITEMS_API =
   "https://www.googleapis.com/youtube/v3/playlistItems";
 
-//youtube.com/playlist?list=PLy2vwCvAbFKScg8nZRzgCkxl3x8n9ABhD
-
-https: exports.sourceNodes = async (
+exports.sourceNodes = async (
   { actions, createContentDigest, createNodeId, getNodesByType },
-  { apiKey, playListID, maxResult = 50 }
+  { apiKey, playListIds, maxResult = 50 }
 ) => {
   const { createNode } = actions;
 
-  const response = await axios.get(
-    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${maxResult}&playlistId=${playListID}&key=${apiKey}`
-  );
+  const playListsData = await getPlaylistsData(playListIds, maxResult, apiKey);
 
-  response.data.items.forEach((video) => {
+  playListsData.forEach((item) => {
     createNode({
-      ...video,
-      id: createNodeId(`YtbPlaylist-${video.id}`),
+      ...item,
+      id: createNodeId(`YtbPlaylist-${item.etag}`),
       parent: null,
       children: [],
       internal: {
         type: "YtbPlayList",
-        content: JSON.stringify(video),
-        contentDigest: createContentDigest(video),
+        content: JSON.stringify(item),
+        contentDigest: createContentDigest(item),
       },
     });
   });
 
   return;
+};
+
+const getPlaylistsData = async (playListIds, maxResult, apiKey) => {
+  const urls = playListIds.map(
+    (playListId) =>
+      `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${maxResult}&playlistId=${playListId}&key=${apiKey}`
+  );
+
+  const playListsData = await Promise.all(urls.map(axios.get)).then((res) =>
+    res.map((item) => item.data)
+  );
+  return playListsData;
 };

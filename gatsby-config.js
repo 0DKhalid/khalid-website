@@ -41,7 +41,10 @@ module.exports = {
       resolve: "gatsby-source-ytbplaylist",
       options: {
         apiKey: process.env.YOUTUBE_KEY,
-        playListID: `PLy2vwCvAbFKScg8nZRzgCkxl3x8n9ABhD`,
+        playListIds: [
+          `PLy2vwCvAbFKScg8nZRzgCkxl3x8n9ABhD`,
+          `PLy2vwCvAbFKSmjvT1NsUEu6N58kf8qGFt`,
+        ],
         maxResult: 50, // defualt 50
       },
     },
