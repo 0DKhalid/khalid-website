@@ -27,8 +27,6 @@ exports.getPlaylistsData = async (channelId, maxResult, apiKey) => {
 };
 
 const getPlaylsits = async (channelId, maxResult, apiKey) => {
-  console.log(channelId, apiKey);
-
   try {
     const playlistsData = await axios.get(
       `${YOUTUBE_PLAYLISTS_API}?&part=snippet&maxResults=${maxResult}&channelId=${channelId}&key=${apiKey}`
@@ -46,5 +44,3 @@ const getPlaylsits = async (channelId, maxResult, apiKey) => {
     throw err;
   }
 };
-
-// https://www.googleapis.com/youtube/v3/playlists?part=snippet&maxResults=50&channelId=UCIBfmRr16yo6gWRTh9rExIQ&key=AIzaSyA27PeWs1trX-Mj-dpby6PrE8UVZtXP1_Qhttps://www.googleapis.com/youtube/v3/playlists?part=snippet&maxResults=50&channelId=UCIBfmRr16yo6gWRTh9rExIQ&key=AIzaSyA27PeWs1trX-Mj-dpby6PrE8UVZtXP1_Qhttps://www.googleapis.com/youtube/v3/playlists?part=snippet&maxResults=50&channelId=UCIBfmRr16yo6gWRTh9rExIQ&key=AIzaSyA27PeWs1trX-Mj-dpby6PrE8UVZtXP1_Q

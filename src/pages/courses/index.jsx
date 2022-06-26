@@ -1,6 +1,7 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
-import { AiFillCheckCircle } from "react-icons/ai";
+// import { AiFillCheckCircle } from "react-icons/ai";
+import { graphql } from "gatsby";
 
 // styled components
 
@@ -19,33 +20,47 @@ const CardText = tw.p`mb-3 font-normal text-gray`;
 
 const CardFooterWrapper = tw.div`flex py-4 px-2 justify-between items-center`;
 
-// const CardTitle
-
-const Courses = () => {
+const Courses = ({ data }) => {
   return (
     <section tw='py-20'>
+      {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
       <header tw='text-center py-10'>
         <h1 tw='text-3xl'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h1>
       </header>
-      <CardWrapper>
-        <CardImage src='https://source.unsplash.com/random' />
-        <CardContentWrapper>
-          <CardTitle>Lorem ipsum dolor sit amet consectetur.</CardTitle>
-          <CardText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio,
-            quibusdam. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Officia ipsa enim mollitia
-          </CardText>
-        </CardContentWrapper>
-        <CardFooterWrapper>
-          <p tw='text-green-300 text-sm '>completed</p>
-          <p tw='text-sm text-red-100'>2h</p>
-        </CardFooterWrapper>
-      </CardWrapper>
+      <div tw='grid grid-cols-3 gap-4 m-6'>
+        {data.playlists.nodes.map((playlist) => {
+          return (
+            <CardWrapper key={playlist.id}>
+              <CardImage src={playlist.thumbnail} />
+              <CardContentWrapper>
+                <CardTitle>{playlist.title}</CardTitle>
+                <CardText>{playlist.description}</CardText>
+              </CardContentWrapper>
+              <CardFooterWrapper>
+                <p tw='text-green-300 text-sm '>completed</p>
+                <p tw='text-sm text-red-100'>2h</p>
+              </CardFooterWrapper>
+            </CardWrapper>
+          );
+        })}
+      </div>
     </section>
   );
 };
+
+export const query = graphql`
+  query playLists {
+    playlists: allYtbPlayList {
+      nodes {
+        description
+        title
+        thumbnail
+        id
+      }
+    }
+  }
+`;
 
 export default Courses;
