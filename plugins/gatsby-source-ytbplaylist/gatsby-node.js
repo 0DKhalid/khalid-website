@@ -1,4 +1,15 @@
-const { getPlaylistsData } = require("./utl");
+const { createRemoteFileNode } = require("gatsby-source-filesystem");
+const { getPlaylistsData } = require("./service");
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type YtbPlayList implements Node {
+      thumnailData: File @link(from: "fields.localFile")
+    }
+  `;
+  createTypes(typeDefs);
+};
 
 exports.sourceNodes = async (
   { actions, createContentDigest, createNodeId, getNodesByType },
@@ -23,6 +34,28 @@ exports.sourceNodes = async (
   });
 
   return;
+};
+
+exports.onCreateNode = async ({ node, actions, createNodeId, getCache }) => {
+  const { createNode, createNodeField } = actions;
+
+  if (node.internal.type === "YtbPlayList" && node.thumbnail !== null) {
+    const fileNode = await createRemoteFileNode({
+      url: node.thumbnail,
+      parentNodeId: node.id,
+      createNode,
+      createNodeId,
+      getCache,
+    });
+
+    if (fileNode) {
+      createNodeField({
+        node,
+        name: "localFile",
+        value: fileNode.id,
+      });
+    }
+  }
 };
 
 exports.pluginOptionsSchema = ({ Joi }) => {

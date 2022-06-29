@@ -1,6 +1,7 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 // import { AiFillCheckCircle } from "react-icons/ai";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
 
 // styled components
@@ -11,36 +12,46 @@ const CardWrapper = styled.article`
   ${tw`max-w-sm rounded-lg`};
 `;
 
-const CardImage = tw.img`rounded-t-lg object-cover w-full h-48`;
+const CardImage = tw(GatsbyImage)`rounded-t-lg object-cover w-full h-48`;
 
 const CardContentWrapper = tw.div`p-5`;
 
-const CardTitle = tw.h5`mb-2 text-2xl font-bold tracking-tight text-white `;
-const CardText = tw.p`mb-3 font-normal text-gray`;
+const CardTitle = tw.h5`mb-2 text-xl font-bold tracking-tight text-white `;
+const CardText = tw.p`mb-3 mt-3 font-normal text-gray`;
 
 const CardFooterWrapper = tw.div`flex py-4 px-2 justify-between items-center`;
 
 const Courses = ({ data }) => {
   return (
     <section tw='py-20'>
-      {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
       <header tw='text-center py-10'>
         <h1 tw='text-3xl'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h1>
       </header>
-      <div tw='grid grid-cols-3 gap-4 m-6'>
+      <div tw='py-16 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  gap-4 m-6'>
         {data.playlists.nodes.map((playlist) => {
+          //the line of code down is dirty and not the final soluation
+          const isCourseNotComplete = playlist.title.includes("git");
           return (
             <CardWrapper key={playlist.id}>
-              <CardImage src={playlist.thumbnail} />
+              <CardImage
+                image={playlist.thumnailData.childImageSharp.gatsbyImageData}
+                alt={playlist.title}
+              />
               <CardContentWrapper>
                 <CardTitle>{playlist.title}</CardTitle>
                 <CardText>{playlist.description}</CardText>
               </CardContentWrapper>
               <CardFooterWrapper>
-                <p tw='text-green-300 text-sm '>completed</p>
-                <p tw='text-sm text-red-100'>2h</p>
+                <p
+                  css={[
+                    tw`text-sm`,
+                    isCourseNotComplete ? tw`text-red-300` : tw`text-green-300`,
+                  ]}
+                >
+                  {isCourseNotComplete ? "غير مكتملة" : "مكتملة"}
+                </p>
               </CardFooterWrapper>
             </CardWrapper>
           );
@@ -58,6 +69,11 @@ export const query = graphql`
         title
         thumbnail
         id
+        thumnailData {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
       }
     }
   }

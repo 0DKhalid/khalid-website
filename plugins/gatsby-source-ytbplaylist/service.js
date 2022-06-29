@@ -20,6 +20,7 @@ exports.getPlaylistsData = async (channelId, maxResult, apiKey) => {
       title: playLists[i].title,
       description: playLists[i].description,
       thumbnail: playLists[i].thumbnail,
+      publishedAt: playLists[i].publishedAt,
     }))
   );
 
