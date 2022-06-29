@@ -1,5 +1,5 @@
-const { createRemoteFileNode } = require("gatsby-source-filesystem");
-const { getPlaylistsData } = require("./service");
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
+const { getPlaylistsData } = require('./service');
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
@@ -26,7 +26,7 @@ exports.sourceNodes = async (
       parent: null,
       children: [],
       internal: {
-        type: "YtbPlayList",
+        type: 'YtbPlayList',
         content: JSON.stringify(item),
         contentDigest: createContentDigest(item),
       },
@@ -39,7 +39,7 @@ exports.sourceNodes = async (
 exports.onCreateNode = async ({ node, actions, createNodeId, getCache }) => {
   const { createNode, createNodeField } = actions;
 
-  if (node.internal.type === "YtbPlayList" && node.thumbnail !== null) {
+  if (node.internal.type === 'YtbPlayList' && node.thumbnail !== null) {
     const fileNode = await createRemoteFileNode({
       url: node.thumbnail,
       parentNodeId: node.id,
@@ -51,7 +51,7 @@ exports.onCreateNode = async ({ node, actions, createNodeId, getCache }) => {
     if (fileNode) {
       createNodeField({
         node,
-        name: "localFile",
+        name: 'localFile',
         value: fileNode.id,
       });
     }

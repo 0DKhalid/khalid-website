@@ -1,8 +1,8 @@
-import React from "react";
-import tw, { styled, css } from "twin.macro";
-// import { AiFillCheckCircle } from "react-icons/ai";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { graphql } from "gatsby";
+import React from 'react';
+import { graphql, navigate } from 'gatsby';
+import slugify from 'slugify';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import tw, { styled } from 'twin.macro';
 
 // styled components
 
@@ -32,9 +32,12 @@ const Courses = ({ data }) => {
       <div tw='py-16 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  gap-4 m-6'>
         {data.playlists.nodes.map((playlist) => {
           //the line of code down is dirty and not the final soluation
-          const isCourseNotComplete = playlist.title.includes("git");
+          const isCourseNotComplete = playlist.title.includes('git');
           return (
-            <CardWrapper key={playlist.id}>
+            <CardWrapper
+              onClick={() => navigate(`/courses/${slugify(playlist.title)}`)}
+              key={playlist.id}
+            >
               <CardImage
                 image={playlist.thumnailData.childImageSharp.gatsbyImageData}
                 alt={playlist.title}
@@ -50,7 +53,7 @@ const Courses = ({ data }) => {
                     isCourseNotComplete ? tw`text-red-300` : tw`text-green-300`,
                   ]}
                 >
-                  {isCourseNotComplete ? "غير مكتملة" : "مكتملة"}
+                  {isCourseNotComplete ? 'غير مكتملة' : 'مكتملة'}
                 </p>
               </CardFooterWrapper>
             </CardWrapper>
@@ -63,7 +66,7 @@ const Courses = ({ data }) => {
 
 export const query = graphql`
   query playLists {
-    playlists: allYtbPlayList(sort: {fields: publishedAt}) {
+    playlists: allYtbPlayList(sort: { fields: publishedAt }) {
       nodes {
         description
         title
