@@ -71,7 +71,7 @@ export const query = graphql`
         id
         thumnailData {
           childImageSharp {
-            gatsbyImageData
+            gatsbyImageData(placeholder: BLURRED)
           }
         }
       }
