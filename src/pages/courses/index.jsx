@@ -63,7 +63,7 @@ const Courses = ({ data }) => {
 
 export const query = graphql`
   query playLists {
-    playlists: allYtbPlayList {
+    playlists: allYtbPlayList(sort: {fields: publishedAt}) {
       nodes {
         description
         title
