@@ -29,7 +29,7 @@ const Courses = ({ data }) => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h1>
       </header>
-      <div tw="py-16 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  gap-4 m-6">
+      <div tw="py-16 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 content-start place-items-center gap-4 m-6">
         {data.playlists.nodes.map((playlist) => {
           //the line of code down is dirty and not the final soluation
           const isCourseNotComplete = playlist.title.includes("git");
