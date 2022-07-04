@@ -1,8 +1,8 @@
-import React from 'react';
-import { graphql, navigate } from 'gatsby';
-import slugify from 'slugify';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import tw, { styled } from 'twin.macro';
+import React from "react";
+import { graphql, navigate } from "gatsby";
+
+import { GatsbyImage } from "gatsby-plugin-image";
+import tw, { styled } from "twin.macro";
 
 // styled components
 
@@ -23,19 +23,19 @@ const CardFooterWrapper = tw.div`flex py-4 px-2 justify-between items-center`;
 
 const Courses = ({ data }) => {
   return (
-    <section tw='py-20'>
-      <header tw='text-center py-10'>
-        <h1 tw='text-3xl'>
+    <section tw="py-20">
+      <header tw="text-center py-10">
+        <h1 tw="text-3xl">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h1>
       </header>
-      <div tw='py-16 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  gap-4 m-6'>
+      <div tw="py-16 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  gap-4 m-6">
         {data.playlists.nodes.map((playlist) => {
           //the line of code down is dirty and not the final soluation
-          const isCourseNotComplete = playlist.title.includes('git');
+          const isCourseNotComplete = playlist.title.includes("git");
           return (
             <CardWrapper
-              onClick={() => navigate(`/courses/${slugify(playlist.title)}`)}
+              onClick={() => navigate(playlist.coursePath)}
               key={playlist.id}
             >
               <CardImage
@@ -53,7 +53,7 @@ const Courses = ({ data }) => {
                     isCourseNotComplete ? tw`text-red-300` : tw`text-green-300`,
                   ]}
                 >
-                  {isCourseNotComplete ? 'غير مكتملة' : 'مكتملة'}
+                  {isCourseNotComplete ? "غير مكتملة" : "مكتملة"}
                 </p>
               </CardFooterWrapper>
             </CardWrapper>
@@ -65,13 +65,14 @@ const Courses = ({ data }) => {
 };
 
 export const query = graphql`
-  query playLists {
+  query PlayLists {
     playlists: allYtbPlayList(sort: { fields: publishedAt }) {
       nodes {
         description
         title
         thumbnail
         id
+        coursePath: gatsbyPath(filePath: "/courses/{ytbPlayList.title}")
         thumnailData {
           childImageSharp {
             gatsbyImageData(placeholder: BLURRED)

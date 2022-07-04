@@ -13,17 +13,17 @@ exports.getPlaylistsData = async (channelId, maxResult, apiKey) => {
       `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${maxResult}&playlistId=${plaList.id}&key=${apiKey}`
   );
 
-  const playListsData = await Promise.all(urls.map(axios.get)).then((res) =>{
-   return res.map((item, i) => ({
+  const playListsData = await Promise.all(urls.map(axios.get)).then((res) => {
+    return res.map((item, i) => ({
       playlist: item.data,
       id: playLists[i].id,
       title: playLists[i].title,
+
       description: playLists[i].description,
       thumbnail: playLists[i].thumbnail,
-      publishedAt: playLists[i].publishedAt,  
-    }))
-  }
-  );
+      publishedAt: playLists[i].publishedAt,
+    }));
+  });
 
   return playListsData;
 };
@@ -39,7 +39,7 @@ const getPlaylsits = async (channelId, maxResult, apiKey) => {
       title: item.snippet.title,
       description: item.snippet.description,
       thumbnail: item.snippet.thumbnails.medium.url,
-      publishedAt: item.snippet.publishedAt 
+      publishedAt: item.snippet.publishedAt,
     }));
     return filterPlaylistsData;
   } catch (err) {
