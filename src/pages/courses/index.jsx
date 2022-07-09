@@ -7,12 +7,12 @@ import tw, { styled } from "twin.macro";
 // styled components
 
 const CardWrapper = styled.article`
-  box-shadow: -4px 19px 52px -11px rgba(229, 49, 112, 0.41);
+  /* box-shadow: -4px 19px 52px -11px rgba(229, 49, 112, 0.41); */
 
-  ${tw`max-w-sm rounded-lg`};
+  ${tw`max-w-sm rounded-lg bg-slate`}
 `;
 
-const CardImage = tw(GatsbyImage)`rounded-t-lg object-cover w-full h-48`;
+const CardImage = tw(GatsbyImage)`w-full h-auto z-0 rounded-t-lg`;
 
 const CardContentWrapper = tw.div`p-5`;
 
@@ -29,7 +29,7 @@ const Courses = ({ data }) => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </h1>
       </header>
-      <div tw="py-16 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 content-start place-items-center gap-4 m-6">
+      <div tw="py-16 grid  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 content-start place-items-center gap-4 m-6">
         {data.playlists.nodes.map((playlist) => {
           //the line of code down is dirty and not the final soluation
           const isCourseNotComplete = playlist.title.includes("git");
