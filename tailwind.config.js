@@ -13,7 +13,7 @@ module.exports = {
         gray: "#a7a9be",
         orange: "#ff8906",
         tertiary: "#e53170",
-        slate: "#0f172a",
+        secondary: "#201E2E",
       },
     },
   },

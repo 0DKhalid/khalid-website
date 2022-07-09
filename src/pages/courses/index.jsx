@@ -7,9 +7,7 @@ import tw, { styled } from "twin.macro";
 // styled components
 
 const CardWrapper = styled.article`
-  /* box-shadow: -4px 19px 52px -11px rgba(229, 49, 112, 0.41); */
-
-  ${tw`max-w-sm rounded-lg bg-slate`}
+  ${tw`max-w-sm rounded-lg bg-secondary`}
 `;
 
 const CardImage = tw(GatsbyImage)`w-full h-auto z-0 rounded-t-lg`;
