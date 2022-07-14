@@ -14,10 +14,10 @@ const CardImage = tw(GatsbyImage)`w-full h-auto z-0 rounded-t-lg`;
 
 const CardContentWrapper = tw.div`p-5`;
 
-const CardTitle = tw.h5`mb-2 text-xl font-bold tracking-tight text-white `;
-const CardText = tw.p`mb-3 mt-3 font-normal text-gray`;
+const CardTitle = tw.h5`mb-2 text-lg font-bold tracking-tight text-white `;
+const CardText = tw.p` mt-3 font-normal text-gray`;
 
-const CardFooterWrapper = tw.div`flex py-4 px-2 justify-between items-center`;
+const CardFooterWrapper = tw.div`flex py-3 px-2 justify-between items-center`;
 
 const Courses = ({ data }) => {
   return (
