@@ -53,6 +53,7 @@ const Courses = ({ data }) => {
                 >
                   {isCourseNotComplete ? "غير مكتملة" : "مكتملة"}
                 </p>
+                <p tw="text-green-200">{playlist.playlist.totalTime}</p>
               </CardFooterWrapper>
             </CardWrapper>
           );
@@ -66,6 +67,9 @@ export const query = graphql`
   query PlayLists {
     playlists: allYtbPlayList(sort: { fields: publishedAt }) {
       nodes {
+        playlist{
+          totalTime
+        }
         description
         title
         thumbnail
@@ -78,6 +82,7 @@ export const query = graphql`
         }
       }
     }
+    
   }
 `;
 

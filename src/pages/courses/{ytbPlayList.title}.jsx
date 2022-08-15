@@ -23,6 +23,7 @@ export const query = graphql`
             title
             resourceId {
               videoId
+              duration
             }
           }
         }

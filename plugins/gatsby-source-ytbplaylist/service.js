@@ -46,19 +46,18 @@ exports.getPlaylistsData = async (channelId, maxResult, apiKey) => {
         ...item.playlist,
         items: item.playlist.items.map((item, itemIndex) => ({
           ...item,
-
           snippet: {
             ...item.snippet,
             resourceId: {
               ...item.snippet.resourceId,
-              duration: videosDuration[itemIndex],
+              duration:moment.duration(videosDuration[itemIndex]).minutes()+ ":"+ moment.duration(videosDuration[itemIndex]).seconds(),
             },
           },
         })),
       },
     };
   });
-
+    
   const finalPlaylistData = Promise.all(playlistWithDuration).then(
     (data) => data
   );
