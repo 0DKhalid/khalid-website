@@ -10,9 +10,9 @@ const CardWrapper = styled.article`
   ${tw`max-w-sm rounded-lg bg-secondary`}
 `;
 
-const CardImage = tw(GatsbyImage)`w-full h-auto z-0 rounded-t-lg`;
+const CardImage = tw(GatsbyImage)`w-full cursor-pointer h-auto z-0 rounded-t-lg`;
 
-const CardContentWrapper = tw.div`p-5`;
+const CardContentWrapper = tw.div`p-5 cursor-pointer`;
 
 const CardTitle = tw.h5`mb-2 text-lg font-bold tracking-tight text-white `;
 const CardText = tw.p` mt-3 font-normal text-gray`;
