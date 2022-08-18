@@ -9,4 +9,4 @@ const PlaylistToolTipe = () => {
 
 
 
-export default PlaylistToolTipe;
+export default PlaylistToolTipe;  
