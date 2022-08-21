@@ -15,17 +15,17 @@ const IndexPage = ({ data }) => {
           dolorum deleniti provident magnam sint.
         </p>
         <div tw=' flex justify-center items-center text-gray mt-8'>
-          <a href='#' tw='hover:text-tertiary'>
+          <a href='https://github.com/0DKhalid' target='_blank' tw='hover:text-tertiary'>
             <BsGithub size='1.6rem' />
           </a>
 
-          <a href='#' tw='hover:text-tertiary'>
+          <a href='https://www.linkedin.com/in/%D8%AE%D8%A7%D9%84%D8%AF-%D8%A7%D9%84%D8%A3%D8%B3%D9%85%D8%B1%D9%8A-2214651b7' target='_blank' tw='hover:text-tertiary'>
             <BsLinkedin
               size='1.6rem'
               style={{ marginLeft: 25, marginRight: 25 }}
             />
           </a>
-          <a href='#' tw='hover:text-tertiary'>
+          <a href='https://www.youtube.com/channel/UCIBfmRr16yo6gWRTh9rExIQ' target='_blank' tw='hover:text-tertiary'>
             <BsYoutube size='1.6rem' />
           </a>
         </div>

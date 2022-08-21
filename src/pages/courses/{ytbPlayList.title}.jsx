@@ -1,19 +1,25 @@
 import { graphql } from "gatsby";
 import React from "react";
-import { VideosList } from "../../components";
+import { VideosList, DescriptionBox, VideoPlayer } from "../../components";
 import tw from "twin.macro";   
 import  { VideoPlayerProvider } from '../../context';
-import {VideoPlayer} from '../../components'
+
 
 const Course = ({ data }) => {
   const playlistItems = data.course.playlist.items;
-   const fristVidId =playlistItems[0].snippet.resourceId.videoId
+   const firstVidId =playlistItems[0].snippet.resourceId.videoId
+
 
   return (
     <VideoPlayerProvider>
-    <section tw="py-10 text-gray flex gap-36">
-      <VideosList firstVidId={fristVidId} list={playlistItems} />     
-      <VideoPlayer/>  
+    <section tw="py-10 text-gray flex gap-48">
+      <VideosList firstVidId={firstVidId}  list={playlistItems} />  
+      <section tw='flex-col justify-center items-center overflow-hidden'>
+      <VideoPlayer firstVidId={firstVidId} />  
+       <DescriptionBox playlistItems={playlistItems}/>
+      </section>
+
+      
     </section>
   </VideoPlayerProvider>
   );

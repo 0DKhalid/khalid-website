@@ -12,7 +12,6 @@ const NavLink = tw(
 
 const menuItems = [
   { path: '/courses', label: 'الدورات' },
-  { path: '/boadcast', label: 'اسأله واجوبة صوتية' },
 ];
 
 const Navbar = () => {
@@ -25,9 +24,10 @@ const Navbar = () => {
           </NavLink>
         ))}
       </LinksContainer>
-      <h1 tw='font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-tertiary to-orange ml-9 mt-9'>
+      <Link  to='/'
+       tw='font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-tertiary to-orange ml-9 mt-9'>
         KTech
-      </h1>
+      </Link>
     </NavContainer>
   );
 };
