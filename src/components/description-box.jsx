@@ -9,7 +9,7 @@ const DescriptionBox = ({playlistItems})=> {
     const currentVid = playlistItems.filter((item) => item.snippet.resourceId.videoId === vidId)
 
   
-    return <article style={{width:640}} tw='bg-secondary overflow-hidden ml-20 my-10 py-10 px-5 rounded-lg'>
+    return <article tw='bg-secondary overflow-hidden  my-10 py-10 px-5 rounded-lg'>
         {currentVid.map((item) => {
             const filterADescriptionText = item.snippet.description.replace(`/\n`, '<br>')
             const urlPattren= `\(https?:\/\/[^ ]*)\g`

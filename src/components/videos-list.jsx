@@ -14,7 +14,7 @@ const VideosList = ({ list, firstVidId }) => {
   const {vidId, activeVidHandler} = useContext(VideoPlayerContext)
   
   return (
-    <aside tw="h-[80vh] overflow-y-scroll  w-1/3 rounded-lg bg-secondary">
+    <aside tw="h-[90vh] overflow-y-scroll  w-1/3 rounded-lg bg-secondary">
       {list.map((item) => (
         <ItemList firstVidId={firstVidId} activeVid={vidId} vidId={item.snippet.resourceId.videoId
         } onClick={()=> activeVidHandler(item.snippet.resourceId.videoId)} key={item.snippet.resourceId.videoId}>

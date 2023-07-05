@@ -7,10 +7,11 @@ import tw, { styled } from "twin.macro";
 // styled components
 
 const CardWrapper = styled.article`
-  ${tw`max-w-sm rounded-lg bg-secondary`}
+   border: 1px solid #2ECAA8;
+  ${tw`max-w-sm rounded-lg bg-transparent flex justify-center`}
 `;
 
-const CardImage = tw(GatsbyImage)`w-full cursor-pointer h-auto z-0 rounded-t-lg`;
+const CardImage = tw(GatsbyImage)` cursor-pointer h-auto z-0 rounded-lg`;
 
 const CardContentWrapper = tw.div`p-5 cursor-pointer`;
 
@@ -22,12 +23,8 @@ const CardFooterWrapper = tw.div`flex py-3 px-2 justify-between items-center`;
 const Courses = ({ data }) => {
   return (
     <section tw="py-20">
-      <header tw="text-center py-10">
-        <h1 tw="text-3xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </h1>
-      </header>
-      <div tw="py-16 grid  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 content-start place-items-center gap-4 m-6">
+      
+      <div tw="py-10 grid  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 content-start place-items-center gap-4 m-6">
         {data.playlists.nodes.map((playlist) => {
           //the line of code down is dirty and not the final soluation
           const isCourseNotComplete = playlist.title.includes("git");
@@ -43,7 +40,6 @@ const Courses = ({ data }) => {
               <CardContentWrapper>
                 <CardTitle>{playlist.title}</CardTitle>
                 <CardText>{playlist.description}</CardText>
-              </CardContentWrapper>
               <CardFooterWrapper>
                 <p
                   css={[
@@ -55,6 +51,7 @@ const Courses = ({ data }) => {
                 </p>
                 <p tw="text-green-200">{playlist.playlist.totalTime}</p>
               </CardFooterWrapper>
+              </CardContentWrapper>
             </CardWrapper>
           );
         })}

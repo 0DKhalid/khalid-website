@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 import React from "react";
-import { VideosList, DescriptionBox, VideoPlayer } from "../../components";
+import { VideosList,  VideoPlayer } from "../../components";
 import tw from "twin.macro";   
 import  { VideoPlayerProvider } from '../../context';
 
@@ -12,11 +12,11 @@ const Course = ({ data }) => {
 
   return (
     <VideoPlayerProvider>
-    <section tw="py-10 text-gray flex gap-48">
+    <section tw="py-10 text-gray flex container">
       <VideosList firstVidId={firstVidId}  list={playlistItems} />  
-      <section tw='flex-col justify-center items-center overflow-hidden'>
-      <VideoPlayer firstVidId={firstVidId} />  
-       <DescriptionBox playlistItems={playlistItems}/>
+      <section tw='flex-col flex-auto mx-5  justify-center items-center overflow-hidden '>
+      <VideoPlayer firstVidId={firstVidId} playlistItems={playlistItems} />  
+     
       </section>
 
       
