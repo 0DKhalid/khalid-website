@@ -17,7 +17,8 @@ const VideoPlayer = ({firstVidId, playlistItems}) => {
       };
 
     return<>
-    <Youtube  videoId={activeVidId} opts={opts} ></Youtube>
+
+    <Youtube videoId={activeVidId} opts={opts} ></Youtube>
     <DescriptionBox playlistItems={playlistItems}/>
     </> 
 }

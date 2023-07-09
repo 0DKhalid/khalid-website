@@ -3,15 +3,13 @@ import { graphql, navigate } from "gatsby";
 
 import { GatsbyImage } from "gatsby-plugin-image";
 import tw, { styled } from "twin.macro";
-
 // styled components
 
 const CardWrapper = styled.article`
-   border: 1px solid #2ECAA8;
-  ${tw`max-w-sm rounded-lg bg-transparent flex justify-center`}
+  ${tw`max-w-sm z-10  bg-secondary shadow-lg  rounded-lg flex justify-center`}
 `;
 
-const CardImage = tw(GatsbyImage)` cursor-pointer h-auto z-0 rounded-lg`;
+const CardImage = tw(GatsbyImage)`w-auto cursor-pointer h-full z-0`;
 
 const CardContentWrapper = tw.div`p-5 cursor-pointer`;
 
@@ -22,7 +20,7 @@ const CardFooterWrapper = tw.div`flex py-3 px-2 justify-between items-center`;
 
 const Courses = ({ data }) => {
   return (
-    <section tw="py-20">
+    <section tw="py-10">
       
       <div tw="py-10 grid  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 content-start place-items-center gap-4 m-6">
         {data.playlists.nodes.map((playlist) => {
@@ -33,9 +31,14 @@ const Courses = ({ data }) => {
               onClick={() => navigate(playlist.coursePath)}
               key={playlist.id}
             >
-              <CardImage
+              <GatsbyImage
                 image={playlist.thumnailData.childImageSharp.gatsbyImageData}
                 alt={playlist.title}
+               tw="rounded-t-lg z-0 w-full cursor-pointer"
+                objectFit='cover'
+            
+            
+      
               />
               <CardContentWrapper>
                 <CardTitle>{playlist.title}</CardTitle>

@@ -29,6 +29,8 @@
     "gatsby-source-youtube-v3": "^3.0.2",
     "gatsby-transformer-remark": "^5.16.0",
     "gatsby-transformer-sharp": "^4.17.0",
+    "linkify-react": "^4.1.1",
+    "linkifyjs": "^4.1.1",
     "prismjs": "^1.28.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

@@ -1,6 +1,12 @@
 import React, {useContext} from 'react';
-import tw from 'twin.macro'
+import  Linkify from 'linkify-react';
 import { VideoPlayerContext } from '../context';
+import tw,{styled} from 'twin.macro'
+
+import './description-box.css'
+
+
+
 
 const DescriptionBox = ({playlistItems})=> {
 
@@ -9,15 +15,11 @@ const DescriptionBox = ({playlistItems})=> {
     const currentVid = playlistItems.filter((item) => item.snippet.resourceId.videoId === vidId)
 
   
-    return <article tw='bg-secondary overflow-hidden  my-10 py-10 px-5 rounded-lg'>
+    return <article style={{whiteSpace:'pre-line'}}  tw='bg-secondary overflow-hidden  my-10 py-10 px-5 rounded-lg'>
         {currentVid.map((item) => {
-            const filterADescriptionText = item.snippet.description.replace(`/\n`, '<br>')
-            const urlPattren= `\(https?:\/\/[^ ]*)\g`
-            const url = filterADescriptionText.match(urlPattren)
-   
+        return  <Linkify  options={{target:"_blank", className:'descLink'}} tw='max-w-lg' key={item.snippet.resourceId.videoId}>{item.snippet.description ? item.snippet.description: 'لا يوجد وصف '}</Linkify>  
             
-        return  <p tw='text-center' key={item.snippet.resourceId.videoId}>{item.snippet.description ? filterADescriptionText : 'لا يوجد وصف '}</p>  
-            
+       
         })}
     </article>
 }

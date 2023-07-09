@@ -12,7 +12,8 @@ const Course = ({ data }) => {
 
   return (
     <VideoPlayerProvider>
-    <section tw="py-10 text-gray flex container">
+    <section tw="py-10 text-gray flex ">
+   
       <VideosList firstVidId={firstVidId}  list={playlistItems} />  
       <section tw='flex-col flex-auto mx-5  justify-center items-center overflow-hidden '>
       <VideoPlayer firstVidId={firstVidId} playlistItems={playlistItems} />  
