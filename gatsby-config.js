@@ -3,6 +3,7 @@ require('dotenv').config({
 });
 
 module.exports = {
+  pathPrefix:'/khalid-website',
   siteMetadata: {
     title: `ktech-website`,
     siteUrl: `https://www.yourdomain.tld`,
@@ -13,6 +14,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-preact`,
 
     {
       resolve: 'gatsby-plugin-web-font-loader',
