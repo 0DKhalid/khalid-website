@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 
 
@@ -11,10 +12,14 @@ export const VideoPlayerContext = createContext({
 
 
 export const VideoPlayerProvider = ({children})=> {
-    
-    const [vidId, setActiveVidId] = useState(null)
+    const {getItem} = useLocalStorage()
+   
+    const [vidId, setActiveVidId] = useState(getItem('activeVidId'))
     const [defualttActiveVid, setDefaultActiveVid] = useState(true)
 
+
+
+   
     const activeVidHandler = (vidId)=> {
         setDefaultActiveVid(false)
         setActiveVidId(vidId)  

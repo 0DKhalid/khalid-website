@@ -5,6 +5,7 @@ import {AiOutlineMenuUnfold, AiOutlineMenuFold} from 'react-icons/ai'
 
 // import { PlaylistToolTipe } from ".";
 import {VideoPlayerContext}  from "../context";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 
 const ItemList = styled.dev`
@@ -17,6 +18,7 @@ ${props => props.showPlaylist ? tw`fixed` : tw`hidden`}
 `
 
 const VideosList = ({ list, firstVidId }) => {
+  const {setItem} = useLocalStorage()
   const {vidId,defualttActiveVid, activeVidHandler} = useContext(VideoPlayerContext)
   const [showPlaylist, setShowPlaylist] = useState(false)
   
@@ -36,6 +38,7 @@ const VideosList = ({ list, firstVidId }) => {
         } onClick={()=> {
           setShowPlaylist(false)
           activeVidHandler(item.snippet.resourceId.videoId)
+          setItem('activeVidId', item.snippet.resourceId.videoId)
         }
       } 
         key={item.snippet.resourceId.videoId}>

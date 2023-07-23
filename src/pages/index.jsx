@@ -22,10 +22,11 @@ const IndexPage = ({ data }) => {
        <h1 tw='text-5xl mb-8 text-white'>هلا والله</h1>
           
           <p tw=' text-gray'>
-            <span tw="mx-1 text-tertiary">انا خالد</span>
+            <span tw="mx-1 my-0 p-0 font-bold  text-transparent bg-clip-text bg-gradient-to-r from-tertiary to-orange">انا خالد</span>
+            <span>
             مطور ويب وأكثر,
-
            أؤمن ان اسمى مراحل المعرفة هي القدرة على نشرها
+            </span>
           </p>
           <div tw='flex justify-center items-center text-gray mt-8'>
             <a href='https://github.com/0DKhalid' target='_blank' tw='hover:text-tertiary'>
@@ -50,7 +51,7 @@ const IndexPage = ({ data }) => {
       <section tw='pt-6 pb-10'>
         <h1 tw='text-5xl text-center text-lightGreen'>مقالاتي</h1>
         {data.posts.nodes.map((post) => (
-          <article tw='py-6 px-10 mx-20  mb-20 text-center border-b border-gray'>
+          <article tw='py-6 md:w-auto mx-20  mb-20 text-center border-b border-gray'>
             <h1 tw='text-xl font-bold  py-10'>{post.frontmatter.title}</h1>
             <p tw='text-gray'>{post.excerpt}</p>
             <div tw='flex text-gray justify-between items-center pt-6'>
