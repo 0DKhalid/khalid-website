@@ -3,7 +3,7 @@ require('dotenv').config({
 });
 
 module.exports = {
-  pathPrefix:'/khalid-website',
+  pathPrefix: '/khalid-website',
   siteMetadata: {
     title: `ktech-website`,
     // siteUrl: `https://www.yourdomain.tld`,
@@ -25,9 +25,9 @@ module.exports = {
       },
     },
     {
-      resolve:'gatsby-plugin-manifest',
-      options:{
-        icon:`src/images/icon.png`
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: `src/images/icon.png`
       }
     },
     {
